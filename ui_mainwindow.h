@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Dec 15 12:05:05 2011
+** Created: Thu Dec 15 15:57:20 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -42,7 +42,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(703, 582);
         QIcon icon;
-	  icon.addFile(QString::fromUtf8("/usr/share/icons/hicolor/48x48/apps/kopete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("../../../../../../usr/share/icons/hicolor/48x48/apps/kopete.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
@@ -76,6 +76,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Merge kopete history", 0, QApplication::UnicodeUTF8));
         addDirButton->setText(QApplication::translate("MainWindow", "Add path", 0, QApplication::UnicodeUTF8));
+        addDirButton->setShortcut(QString());
         saveButton->setText(QApplication::translate("MainWindow", "Save", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

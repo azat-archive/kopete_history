@@ -40,6 +40,9 @@
     <property name="text">
      <string>Add path</string>
     </property>
+    <property name="shortcut">
+     <string/>
+    </property>
    </widget>
    <widget class="QPushButton" name="saveButton">
     <property name="geometry">

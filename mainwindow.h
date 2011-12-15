@@ -15,10 +15,9 @@ public:
 	MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
-protected:
-	void changeEvent(QEvent *e);
-
 private:
+	void bindShortcuts();
+
 	Ui::MainWindow *ui;
 	Merger* merger;
 
