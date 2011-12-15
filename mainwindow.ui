@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../../../../usr/share/icons/hicolor/48x48/apps/kopete.png</normaloff>../../../../../../usr/share/icons/hicolor/48x48/apps/kopete.png</iconset>
+    <normaloff>/usr/share/icons/hicolor/48x48/apps/kopete.png</normaloff>/usr/share/icons/hicolor/48x48/apps/kopete.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QListWidget" name="dirsListWidget">
