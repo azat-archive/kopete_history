@@ -2,13 +2,18 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QString>
+
+#include <merger.h>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);
+	merger = new Merger;
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
+	delete merger;
 }
 
 void MainWindow::changeEvent(QEvent *e) {
@@ -23,6 +28,17 @@ void MainWindow::changeEvent(QEvent *e) {
 }
 
 void MainWindow::on_addDirButton_clicked() {
-	QFileDialog* dileDialog = new QFileDialog(this);
-	dileDialog->showNormal();
+	QString dir = QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly);
+
+	merger->addPath(dir);
+	ui->dirsListWidget->addItem(dir);
+}
+
+void MainWindow::on_saveButton_clicked() {
+	try {
+		long messages = merger->run();
+		ui->statusBar->showMessage("Done. Success. " + QString::number(messages) + " messages.");
+	} catch (const MergerException& mergerException) {
+		ui->statusBar->showMessage(mergerException.getMessage());
+	}
 }

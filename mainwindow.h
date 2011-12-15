@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <merger.h>
+
 namespace Ui {
 	class MainWindow;
 }
@@ -18,9 +20,11 @@ protected:
 
 private:
 	Ui::MainWindow *ui;
+	Merger* merger;
 
 private slots:
 	void on_addDirButton_clicked();
+	void on_saveButton_clicked();
 };
 
 #endif // MAINWINDOW_H
