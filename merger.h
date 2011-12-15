@@ -14,7 +14,7 @@ public:
 	explicit Merger(QObject *parent = 0);
 	void addPath(QString path);
 	void setPaths(QStringList paths);
-	long run();
+	long run(QString saveTo);
 
 signals:
 

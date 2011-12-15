@@ -36,7 +36,9 @@ void MainWindow::on_addDirButton_clicked() {
 
 void MainWindow::on_saveButton_clicked() {
 	try {
-		long messages = merger->run();
+		QString saveTo = QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly);
+		long messages = merger->run(saveTo);
+
 		ui->statusBar->showMessage("Done. Success. " + QString::number(messages) + " messages.");
 	} catch (const MergerException& mergerException) {
 		ui->statusBar->showMessage(mergerException.getMessage());

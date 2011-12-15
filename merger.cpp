@@ -11,6 +11,6 @@ void Merger::setPaths(QStringList paths) {
 	this->paths = paths;
 }
 
-long Merger::run() {
+long Merger::run(QString saveTo) {
 	throw MergerException("Implement this feature");
 }
