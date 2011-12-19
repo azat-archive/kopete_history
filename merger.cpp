@@ -3,7 +3,10 @@
 Merger::Merger(QObject *parent) : QObject(parent) {
 }
 
-void Merger::addPath(QString& path) {
+void Merger::addPath(const QString& path) {
+	if (paths.contains(path)) {
+		throw MergerException("Path '" + path + "'' already added");
+	}
 	paths.push_back(path);
 }
 
@@ -11,25 +14,25 @@ void Merger::setPaths(QStringList& paths) {
 	paths = paths;
 }
 
-long Merger::run(QDir& saveTo) {
+long Merger::run(const QDir& saveTo) {
 	int i = 0;
 
 	if (paths.count() < 2) {
 		throw MergerException("First you must add more than or equal two path");
 	}
 
-	foreach (QDir path, paths) {
+	foreach (QString path, paths) {
 		if (++i == 1) {
-			copyDirectory(path, saveTo);
+			copyDirectoryRecursive(path, saveTo);
 		} else {
 			mergeDirectory(path, saveTo);
 		}
 	}
 }
 
-void Merger::copyDirectory(QDir from, QDir to) {
+void Merger::copyDirectoryRecursive(const QDir from, const QDir to) {
 	if (!to.Writable) {
-		throw MergerException("Path '" + to.dirName() + "' is not writable");
+		throw MergerException("Path '" + to.path() + "' is not writable");
 	}
 
 	foreach (QString srcFile, from.entryList()) {
@@ -37,15 +40,28 @@ void Merger::copyDirectory(QDir from, QDir to) {
 			continue;
 		}
 
-		QString dstFile = to.dirName() + "/" + srcFile;
+		QFileInfo srcPath(from.path() + QDir::separator() + srcFile);
+		QFileInfo dstPath(to.path() + QDir::separator() + srcFile);
 
-		if (!QFile::copy(srcFile, dstFile)) {
-			throw MergerException("Can`t copy file '" + srcFile + "' to '" + dstFile + "'");
+		// not existing directory - create
+		if (srcPath.isDir()) {
+			QDir dstDir(dstPath.filePath());
+
+			if (!dstDir.exists() && !dstDir.mkdir(dstDir.path())) {
+				throw MergerException("Can`t create directory '" + dstDir.path() + "'");
+			}
+
+			copyDirectoryRecursive(srcPath.filePath(), dstDir.path());
+		} else {
+			// copy file
+			if (!QFile::copy(srcPath.filePath(), dstPath.filePath())) {
+				throw MergerException("Can`t copy file '" + srcPath.filePath() + "' to '" + dstPath.filePath() + "'");
+			}
 		}
 	}
 }
 
-void Merger::mergeDirectory(QDir from, QDir to) {
+void Merger::mergeDirectory(const QDir from, const QDir to) {
 	if (!to.Writable) {
 		throw MergerException("Path '" + to.dirName() + "' is not writable");
 	}

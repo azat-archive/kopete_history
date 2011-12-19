@@ -20,20 +20,30 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::bindShortcuts() {
-	QShortcut *shortcut = new QShortcut(QKeySequence(tr("Ctrl+O", "File|Add")), this);
-	connect(shortcut, SIGNAL(activated()), ui->addDirButton, SLOT(click()));
+	// add
+	QShortcut *shortcutAdd = new QShortcut(QKeySequence(tr("Ctrl+O", "File|Add")), this);
+	connect(shortcutAdd, SIGNAL(activated()), ui->addDirButton, SLOT(click()));
+
+	// save
+	QShortcut *shortcutSave = new QShortcut(QKeySequence(tr("Ctrl+S", "File|Save")), this);
+	connect(shortcutSave, SIGNAL(activated()), ui->saveButton, SLOT(click()));
 }
 
 void MainWindow::on_addDirButton_clicked() {
 	QString dir = QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly);
 
-	merger->addPath(dir);
-	ui->dirsListWidget->addItem(dir);
+	try {
+		merger->addPath(dir);
+		ui->dirsListWidget->addItem(dir);
+	} catch (const MergerException& mergerException) {
+		ui->statusBar->showMessage(mergerException.getMessage());
+	}
 }
 
 void MainWindow::on_saveButton_clicked() {
+	QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
+
 	try {
-		QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
 		long messages = merger->run(saveTo);
 
 		ui->statusBar->showMessage("Done. Success. " + QString::number(messages) + " messages.");
