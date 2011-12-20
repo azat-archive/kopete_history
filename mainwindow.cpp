@@ -51,15 +51,7 @@ void MainWindow::on_addDirButton_clicked() {
 }
 
 void MainWindow::on_saveButton_clicked() {
-	// tests
-	try {
-		merger->addPath("/tmp/kopete_tests/first");
-		merger->addPath("/tmp/kopete_tests/second");
-	} catch (const MergerException& e) {} // already added
-	QDir saveTo("/tmp/kopete_tests/out");
-
-	// production
-	// QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
+	QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
 
 	try {
 		long messages = merger->run(saveTo);

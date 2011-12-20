@@ -146,13 +146,11 @@ long Merger::merge(QString from, QString to) {
 	for (unsigned i = 0; i < toMsgs.length(); ++i, ++messages) {
 		QDomNode node = toMsgs.at(i);
 		msgMap[generateKey(node.toElement().attribute("time"))] = node;
-		qDebug() << "Message: " << node.firstChild().toText().data();
 	}
 	QDomNodeList fromMsgs = fromDoc.elementsByTagName("msg");
 	for (unsigned i = 0; i < fromMsgs.length(); ++i, ++messages) {
 		QDomNode node = fromMsgs.at(i);
 		msgMap[generateKey(node.toElement().attribute("time"))] = node;
-		qDebug() << "Message: " << node.firstChild().toText().data();
 	}
 	foreach (QDomNode node, msgMap) {
 		root.appendChild(node);
