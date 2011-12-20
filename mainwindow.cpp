@@ -1,3 +1,9 @@
+/**
+ * Main GUI window
+ *
+ * @author Azat Khuzhin <dohardgopro@gmail.com>
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -27,6 +33,10 @@ void MainWindow::bindShortcuts() {
 	// save
 	QShortcut *shortcutSave = new QShortcut(QKeySequence(tr("Ctrl+S", "File|Save")), this);
 	connect(shortcutSave, SIGNAL(activated()), ui->saveButton, SLOT(click()));
+
+	// quit
+	QShortcut *shortcutQuit = new QShortcut(QKeySequence(tr("Ctrl+Q", "File|Quit")), this);
+	connect(shortcutQuit, SIGNAL(activated()), QApplication::instance(), SLOT(quit()));
 }
 
 void MainWindow::on_addDirButton_clicked() {
@@ -41,7 +51,15 @@ void MainWindow::on_addDirButton_clicked() {
 }
 
 void MainWindow::on_saveButton_clicked() {
-	QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
+	// tests
+	try {
+		merger->addPath("/tmp/kopete_tests/first");
+		merger->addPath("/tmp/kopete_tests/second");
+	} catch (const MergerException& e) {} // already added
+	QDir saveTo("/tmp/kopete_tests/out");
+
+	// production
+	// QDir saveTo(QFileDialog::getExistingDirectory(this, "Select directory", getenv("~"), QFileDialog::ShowDirsOnly));
 
 	try {
 		long messages = merger->run(saveTo);

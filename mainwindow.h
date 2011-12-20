@@ -1,3 +1,9 @@
+/**
+ * Main GUI window
+ *
+ * @author Azat Khuzhin <dohardgopro@gmail.com>
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

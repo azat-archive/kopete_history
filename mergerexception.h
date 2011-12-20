@@ -1,3 +1,9 @@
+/**
+ * Merger exception
+ *
+ * @author Azat Khuzhin <dohardgopro@gmail.com>
+ */
+
 #ifndef MERGEREXCEPTION_H
 #define MERGEREXCEPTION_H
 
