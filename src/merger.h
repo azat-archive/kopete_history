@@ -13,7 +13,7 @@
 #include <QString>
 #include <QDir>
 
-#include <mergerexception.h>
+#include "mergerexception.h"
 
 class Merger : public QObject {
 	Q_OBJECT

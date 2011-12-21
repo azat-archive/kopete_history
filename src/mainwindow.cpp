@@ -4,14 +4,14 @@
  * @author Azat Khuzhin <dohardgopro@gmail.com>
  */
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-
 #include <QFileDialog>
 #include <QString>
 #include <QShortcut>
 
-#include <merger.h>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+#include "merger.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);

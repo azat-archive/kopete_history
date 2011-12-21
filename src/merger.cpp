@@ -4,10 +4,10 @@
  * @author Azat Khuzhin <dohardgopro@gmail.com>
  */
 
-#include "merger.h"
-
 #include <QDomDocument>
 #include <QMap>
+
+#include "merger.h"
 
 Merger::Merger(QObject *parent) : QObject(parent) {
 }

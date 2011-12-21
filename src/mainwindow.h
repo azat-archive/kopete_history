@@ -9,7 +9,7 @@
 
 #include <QMainWindow>
 
-#include <merger.h>
+#include "merger.h"
 
 namespace Ui {
 	class MainWindow;
