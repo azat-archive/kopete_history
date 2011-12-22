@@ -1,7 +1,11 @@
 /**
  * Merger exception
  *
+ * @package kopete_history
  * @author Azat Khuzhin <dohardgopro@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 #ifndef MERGEREXCEPTION_H

@@ -1,7 +1,11 @@
 /**
  * Merger
  *
+ * @package kopete_history
  * @author Azat Khuzhin <dohardgopro@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 #ifndef MERGER_H
@@ -19,7 +23,7 @@ class Merger : public QObject {
 	Q_OBJECT
 public:
 	explicit Merger(QObject *parent = 0);
-	void addPath(const QString& path);
+	Merger* addPath(const QString& path);
 	void setPaths(QStringList& paths);
 	long run(const QDir& saveTo);
 

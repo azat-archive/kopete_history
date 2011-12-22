@@ -1,7 +1,11 @@
 /**
  * Merger
  *
+ * @package kopete_history
  * @author Azat Khuzhin <dohardgopro@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 #include <QDomDocument>
@@ -12,11 +16,13 @@
 Merger::Merger(QObject *parent) : QObject(parent) {
 }
 
-void Merger::addPath(const QString& path) {
+Merger* Merger::addPath(const QString& path) {
 	if (paths.contains(path)) {
 		throw MergerException("Path '" + path + "'' already added");
 	}
 	paths.push_back(path);
+
+	return this;
 }
 
 void Merger::setPaths(QStringList& paths) {
