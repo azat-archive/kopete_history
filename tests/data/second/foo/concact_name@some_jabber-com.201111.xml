@@ -1,0 +1,12 @@
+<!DOCTYPE Kopete-History>
+<kopete-history version="0.9">
+ <head>
+  <date month="11" year="2011"/>
+  <contact contactId="me@some_jabber.com" type="myself"/>
+  <contact contactId="contact_name@some_jabber.com"/>
+ </head>
+ <msg nick="Concat Name" in="1" from="contact_name@some_jabber.com" time="25 11:23:13">Hi</msg>
+ <msg nick="" in="0" from="me@some_jabber.com" time="25 11:24:35">How are u</msg>
+ <msg nick="" in="0" from="me@some_jabber.com" time="25 11:25:20">?</msg>
+ <msg nick="Concat Name" in="1" from="contact_name@some_jabber.com" time="25 11:25:28">I'm good</msg>
+</kopete-history>

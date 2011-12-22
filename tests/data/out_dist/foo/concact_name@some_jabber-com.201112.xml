@@ -1,0 +1,10 @@
+<!DOCTYPE Kopete-History>
+<kopete-history version="0.9">
+ <head>
+  <date month="12" year="2011"/>
+  <contact contactId="me@some_jabber.com" type="myself"/>
+  <contact contactId="contact_name@some_jabber.com"/>
+ </head>
+ <msg nick="" in="0" from="me@some_jabber.com" time="2 17:50:37">Some other char is start</msg>
+ <msg nick="Contact Name" in="1" from="contact_name@some_jabber.com" time="3 0:15:44">Another answer</msg>
+</kopete-history>

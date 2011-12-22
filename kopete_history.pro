@@ -3,9 +3,7 @@
 # -------------------------------------------------
 QT += xml \
     xmlpatterns \
-    testlib \
-    dbus \
-    testlib
+    dbus
 TARGET = kopete_history
 TEMPLATE = app
 SOURCES += src/main.cpp \
