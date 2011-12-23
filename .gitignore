@@ -8,6 +8,7 @@
 # qt generated files
 ui_*
 moc_*
+*.moc
 Makefile
 kopete_history
 tests/kopete_history_tests
