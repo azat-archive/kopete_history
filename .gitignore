@@ -12,3 +12,4 @@ Makefile
 kopete_history
 tests/kopete_history_tests
 /tests/data/out/
+*.pro.user
