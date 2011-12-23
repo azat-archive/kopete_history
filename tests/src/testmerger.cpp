@@ -8,6 +8,8 @@
  * file that was distributed with this source code.
  */
 
+#ifdef QT_TEST_PROJECT
+
 #include <QtTest/QtTest>
 #include <QProcess>
 
@@ -129,3 +131,5 @@ void TestMerger::removeDirectoryRecursive(const QDir what) {
 // main
 QTEST_MAIN(TestMerger)
 #include "testmerger.moc"
+
+#endif
