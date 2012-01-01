@@ -26,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
 	delete ui;
-	delete merger;
 }
 
 void MainWindow::bindShortcuts() {
